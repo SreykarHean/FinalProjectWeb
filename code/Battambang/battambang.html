@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battambang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+.h1{
+  font-size: 20px;
+  font-weight: 100;
+  justify-self: center;
+
+.btb{
+  border-radius: 2px;
+  color: #2a1f1f;
+}
+}
+:root{
+  --bg:#f6f1e7;
+  --text:#3b2f2f;
+  --muted:#6b5b4a;
+  --accent:#8b5a2b;
+  --card:#fffaf3;
+}
+
+body{font-family:'Inter',sans-serif;background:white;color:var(--text);padding:10px 60px;}
+.header-row{display:flex;align-items:center;padding:40px 20px;}
+.province-title{font-family:'Playfair Display',serif;font-size:32px;letter-spacing:3px;}
+.line{flex:1;height:2px;background:var(--accent);margin:0 20px;}
+.back-link{text-decoration:none;color:var(--accent);font-weight:600;}
+
+/* HERO */
+.hero{margin-bottom:50px; position: relative;}
+.slider-main{position:relative;width:100%;height:540px;overflow:hidden;border-radius:24px; display:flex; align-items:center; justify-content:center;}
+.slide-main{position:absolute;inset:0;opacity:0;transition:0.6s ease; display:flex; gap:20px; align-items:center; justify-content:center; padding:20px;}
+.slide-main.active{opacity:1;}
+.slide-main img{
+    width:70%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* Slide description */
+.slide-text{
+    width:50%;
+}
+.slide-text h2{
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    margin-bottom:15px;
+}
+.slide-text p{
+    font-size:16px;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* Arrows on image */
+.btn {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background: rgba(139,90,43,0.7);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:18px;
+    transition: background 0.3s;
+}
+.btn:hover{background: rgba(139,90,43,1);}
+.btn-prev{left:10px;}
+.btn-next{right:10px;}
+
+/* FEATURE SECTIONS */
+.feature-section{display:flex;align-items:center;gap:40px;padding:80px 0;border-bottom:1px solid #e3dcd1;}
+.feature-section.reverse{flex-direction:row-reverse;}
+.feature-text{width:50%;}
+.feature-text h2{font-family:'Playfair Display',serif;font-size:32px;margin-bottom:15px;}
+.feature-text p{font-size:16px;color:var(--muted);line-height:1.7;}
+.feature-image{width:50%;}
+.feature-image img{width:100%;border-radius:20px;filter:sepia(10%) contrast(105%);}
+
+/* TIMELINE */
+.slider-section{padding:60px 0;}
+.section-title{font-family:'Playfair Display',serif;font-size:30px;margin-bottom:20px;text-align:center;}
+.slider-container{overflow:hidden;}
+.slider-events{display:flex;transition:0.5s ease;}
+.slide-event{min-width:300px;margin-right:20px;background:var(--card);border-radius:8px;overflow:hidden;}
+.slide-event img{width:100%;height:250px;object-fit:cover;filter:sepia(10%);}
+.slide-event p{padding:14px;font-size:14px;text-align:center;}
+.slider-header{display:flex;justify-content:center;gap:15px;margin-bottom:20px;}
+.arrow{width:40px;height:40px;border-radius:50%;border:none;background:var(--accent);color:#fff;cursor:pointer;}
+
+/* FOOTER */
+.footer{background:#3b2f2f;color:#eee;margin-top:80px;width:100vw;margin-left:calc(-50vw + 50%);}
+.footer-top{display:flex;justify-content:space-between;padding:60px 80px;flex-wrap:wrap;gap:30px;}
+.footer-col h4{font-family:'Playfair Display',serif;margin-bottom:15px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.social-icons a{color:#fff;margin-right:15px;font-size:18px;}
+.footer-bottom{background:#2a1f1f;padding:20px;display:flex;justify-content:flex-end;font-size:14px;flex-wrap:wrap;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  body{padding:10px 20px;}
+  .feature-section{flex-direction:column;}
+  .feature-section.reverse{flex-direction:column;}
+  .feature-text,.feature-image{width:100%;}
+  .hero-text h1{font-size:36px;}
+  .slide-main{flex-direction:column;}
+  .slide-main img, .slide-text{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-row">
+  <div class="province-title">BATTAMBANG</div>
+  <div class="line"></div>
+  <a href="../index.html" class="back-link">BACK</a>
+</div>
+<div class="h1">Welcome to Battambang, Cambodia's historic city. Renowned for its colonial architecture.</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="slider-main">
+    <div class="slide-main active">
+        <img src="psa.jpg">
+        <div class="slide-text">
+            <h2>Psar Nath</h2>
+            <p>This historic market is known for its vibrant atmosphere,</p>
+            <p> traditional architecture,and variety of local products.</p>
+        </div>
+    </div>
+    <div class="slide-main">
+        <img src="bang.jpg">
+        <div class="slide-text">
+            <h2>Colonial Charm, National Pride</h2>
+            <p>A graceful colonial building with arched windows,</p>
+            <p>blending historic charm and Battambang's civic identity.</p>
+        </div>
+    </div>
+    <div class="slide-main">
+        <img src="vimean.jpg">
+        <div class="slide-text">
+            <h2>Independent Monument</h2>
+            <p>A famous spiritual landmark of Battambang with rich history</p>
+            <p>and intricate temple architecture.</p>
+        </div>
+    </div>
+
+    <!-- Arrows -->
+    <div class="btn btn-prev" onclick="prevHero()">←</div>
+    <div class="btn btn-next" onclick="nextHero()">→</div>
+  </div>
+</section>
+
+<!-- FEATURE SECTIONS -->
+<section class="feature-section">
+  <div class="feature-image"><img src="museum.jpg"></div>
+  <div class="feature-text">
+    <h2>Colonial Heritage</h2>
+    <p>Well-preserved French-era buildings reflect Battambang's architectural legacy and give a glimpse of early 20th-century life in Cambodia.</p>
+  </div>
+</section>
+
+<section class="feature-section reverse">
+  <div class="feature-image"><img src="loukta.jpg"></div>
+  <div class="feature-text">
+    <h2>Artistic Spirit</h2>
+    <p>Creative energy flows through galleries, performances, and community art projects that celebrate both tradition and contemporary expression.</p>
+  </div>
+</section>
+
+<section class="feature-section">
+  <div class="feature-image"><img src="water.png"></div>
+  <div class="feature-text">
+    <h2>Waterfall Escape</h2>
+    <p>Hidden in the countryside, a cascade tumbles gracefully into a cool natural pool, surrounded by lush greenery. The sound of rushing water and the fresh mountain air create a peaceful retreat, inviting visitors to pause, relax, and connect with nature's rhythm.</p>
+  </div>
+</section>
+
+<section class="feature-section reverse">
+  <div class="feature-image"><img src="templeEkphnom.webp"></div>
+  <div class="feature-text">
+    <h2>Spiritual Landmarks</h2>
+    <p>Temples and sacred sites reveal deep-rooted spiritual traditions preserved over centuries in Battambang.</p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="slider-section">
+  <h2 class="section-title">Battambang Through Time</h2>
+  <div class="slider-container">
+    <div class="slider-events" id="sliderEvents">
+      <div class="slide-event"><img src="phnum.jpg"><p>Ancient Foundations</p></div>
+      <div class="slide-event"><img src="nature.png"><p>Nature</p></div>
+      <div class="slide-event"><img src="preah.png"><p>Cultural Revival</p></div>
+      <div class="slide-event"><img src="rural.png"><p>Rural Continuity</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>About Battambang</h4>
+      <a href="https://en.wikipedia.org/wiki/Battambang_province" class="back-link">History</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect with us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>Last Updated December 2025</div>
+  </div>
+</footer>
+
+<script>
+// HERO SLIDER
+const heroSlides = document.querySelectorAll('.slide-main');
+let heroIndex = 0;
+
+function updateHero(){ 
+  heroSlides.forEach(s => s.classList.remove('active'));
+  heroSlides[heroIndex].classList.add('active');
+}
+
+function nextHero(){ 
+  heroIndex = (heroIndex + 1) % heroSlides.length; 
+  updateHero(); 
+}
+
+function prevHero(){ 
+  heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length; 
+  updateHero(); 
+}
+
+// TIMELINE SLIDER
+let eIndex = 0;
+const slider = document.getElementById('sliderEvents');
+function slideRight(){
+  if(eIndex < slider.children.length-1){ 
+      eIndex++; 
+      slider.style.transform = `translateX(-${eIndex*320}px)`; 
+  }
+}
+function slideLeft(){
+  if(eIndex > 0){ 
+      eIndex--; 
+      slider.style.transform = `translateX(-${eIndex*320}px)`; 
+  }
+}
+</script>
+</body>
+</html>

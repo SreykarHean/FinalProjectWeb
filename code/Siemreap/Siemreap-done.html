@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siem Reap | The Sacred Path</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --bg: #ffffff;
+            --accent: #1a1a1a;
+            --muted: #666;
+            --gold: #b08d57;
+            --light-bg: #fdfdfb;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { margin: 0; background: var(--bg); color: var(--accent); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* --- GLOBAL BACK BUTTON --- */
+        .global-back-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 5000;
+        }
+
+        .btn-to-destinations {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .btn-to-destinations:hover { transform: translateX(-3px); background: var(--accent); color: white; }
+
+        /* --- HERO --- */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://afar.brightspotcdn.com/dims4/default/943e99c/2147483647/strip/true/crop/3000x1592+0+295/resize/1440x764!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F34%2F8c%2F0a3f548947909b5b8d79b935b03f%2Ftravelguides-siemreap-guitarphotographer-shutterstock.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 10vw, 5rem); letter-spacing: 10px; margin: 0; text-transform: uppercase; }
+        .hero p { max-width: 500px; font-weight: 300; letter-spacing: 1px; opacity: 0.8; margin-top: 15px; font-size: 0.9rem; }
+
+        /* --- ROADMAP --- */
+        .roadmap-header { text-align: center; padding: 80px 20px 20px; }
+        .roadmap { max-width: 1100px; margin: 0 auto; position: relative; padding: 40px 20px 100px; }
+        
+        .roadmap::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #eee; transform: translateX(-50%); }
+        .progress { position: absolute; left: 50%; top: 0; width: 2px; background: var(--gold); transform: translateX(-50%); height: 0%; z-index: 1; }
+
+        .stop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; position: relative; opacity: 0; transform: translateY(30px); transition: 0.8s; }
+        .stop.visible { opacity: 1; transform: translateY(0); }
+        .stop:nth-child(even) { flex-direction: row-reverse; }
+
+        .dot { position: absolute; left: 50%; width: 12px; height: 12px; background: white; border: 2px solid #ddd; border-radius: 50%; transform: translateX(-50%); z-index: 2; }
+        .stop.visible .dot { background: var(--gold); border-color: var(--gold); }
+
+        .content { width: 44%; }
+
+        /* --- NEW HOVER EFFECT STYLES --- */
+        .img-box { 
+            width: 100%; 
+            height: 250px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            position: relative; 
+            cursor: pointer; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .img-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* The Overlay Overlay */
+        .img-box::after {
+            content: 'EXPLORE';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        /* Hover Actions */
+        .img-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .img-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .img-box:hover::after {
+            opacity: 1;
+        }
+
+        .text-side h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 15px 0 5px; }
+        .text-side p { font-size: 0.85rem; color: var(--muted); }
+        .stop:nth-child(odd) .text-side { text-align: right; }
+
+        /* --- DETAIL VIEW --- */
+        #detail-view { position: fixed; inset: 0; background: var(--light-bg); z-index: 6000; display: none; opacity: 0; overflow-y: auto; padding: 20px; transition: 0.4s ease; }
+        .detail-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; padding-top: 60px; }
+        
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
+        .gallery img:first-child { grid-column: span 2; height: 350px; }
+
+        .info h3 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); margin: 0 0 15px; }
+        .map-btn { display: block; text-align: center; margin-top: 25px; padding: 15px; background: var(--accent); color: white; text-decoration: none; border-radius: 4px; font-weight: 700; font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .roadmap::before, .progress { left: 20px; transform: none; }
+            .stop, .stop:nth-child(even) { flex-direction: column; align-items: flex-start; margin-bottom: 60px; }
+            .content { width: calc(100% - 40px); margin-left: 40px; }
+            .dot { left: 20px; transform: translateX(-50%); }
+            .stop:nth-child(odd) .text-side { text-align: left; }
+            .detail-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="global-back-nav">
+    <a href="../index.html" class="btn-to-destinations">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+         Back
+    </a>
+</nav>
+
+<section class="hero">
+    <h1>Siem Reap</h1>
+    <p>Explore the 5 most sacred temples of the ancient Khmer Empire.</p>
+</section>
+
+<div class="roadmap-header">
+    <h2 style="font-family: 'Playfair Display'; font-size: 2rem;">The Itinerary</h2>
+</div>
+
+<div class="roadmap">
+    <div class="progress" id="pLine"></div>
+
+    <div class="stop">
+        <div class="dot"></div>
+        <div class="content">
+            <div class="img-box" onclick="openTemple('angkor')">
+                <img src="https://static.independent.co.uk/2025/03/17/11/17/Angkor-Wat-(GettyImages-944343802).jpg">
+            </div>
+            <div class="text-side"><h2>Angkor Wat</h2><p>The iconic silhouette.</p></div>
+        </div>
+    </div>
+
+    <div class="stop">
+        <div class="dot"></div>
+        <div class="content">
+            <div class="img-box" onclick="openTemple('bayon')">
+                <img src="https://www.agoda.com/wp-content/uploads/2024/04/bayon-cambodia-siem-reap.jpg">
+            </div>
+            <div class="text-side"><h2>Bayon Temple</h2><p>The faces of stone.</p></div>
+        </div>
+    </div>
+
+    <div class="stop">
+        <div class="dot"></div>
+        <div class="content">
+            <div class="img-box" onclick="openTemple('preahkhan')">
+                <img src="https://evivatour.com/wp-content/uploads/2021/09/Preah-Khan-Temple.jpg">
+            </div>
+            <div class="text-side"><h2>Preah Khan</h2><p>The jungle labyrinth.</p></div>
+        </div>
+    </div>
+
+    <div class="stop">
+        <div class="dot"></div>
+        <div class="content">
+            <div class="img-box" onclick="openTemple('baphuon')">
+                <img src="https://cdn.sanity.io/images/nxpteyfv/goguides/8b64c5c262c94db8c8b4bef5abd0f92ed9a5fa78-1600x1066.jpg">
+            </div>
+            <div class="text-side"><h2>Baphuon</h2><p>The temple mountain.</p></div>
+        </div>
+    </div>
+
+    <div class="stop">
+        <div class="dot"></div>
+        <div class="content">
+            <div class="img-box" onclick="openTemple('bakheng')">
+                <img src="https://www.greeneratravel.com/userfiles/850sunset.jpg">
+            </div>
+            <div class="text-side"><h2>Phnom Bakheng</h2><p>The sunset peak.</p></div>
+        </div>
+    </div>
+</div>
+
+<div id="detail-view">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <div class="btn-to-destinations" style="cursor:pointer; display:inline-flex;" onclick="closeTemple()">← Back to Roadmap</div>
+    </div>
+    <div class="detail-grid">
+        <div class="gallery" id="gBox"></div>
+        <div class="info">
+            <h3 id="tName"></h3>
+            <p id="tDesc"></p>
+            <a href="" id="tMap" target="_blank" class="map-btn">OPEN IN GOOGLE MAPS</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const data = {
+        angkor: {
+            name: "Angkor Wat",
+            desc: "Built by King Suryavarman II in the early 12th century, Angkor Wat is the ultimate expression of Khmer genius. Originally dedicated to the Hindu god Vishnu, it was designed as a terrestrial representation of Mount Meru, the Mount Olympus of Hindu mythology. The temple is famous for its 800 meters of intricate bas-reliefs depicting epic stories and nearly 2,000 unique celestial dancers, or Apsaras, carved into its sandstone walls. As the world's largest religious monument, its perfect composition and scale remain an architectural marvel today.",
+            map: "https://www.google.com/maps/search/?api=1&query=Angkor+Wat",
+            imgs: ["https://static.independent.co.uk/2025/03/17/11/17/Angkor-Wat-(GettyImages-944343802).jpg", "https://justsiemreap.com/wp-content/uploads/2018/05/angkor-wat-view-1920x1280_tw.jpg", "https://internationalliving.com/_next/image/?url=https%3A%2F%2Fimages.ctfassets.net%2Fwv75stsetqy3%2F1e1cm8WhT3TKwW8lVCDIKb%2F8aba5693e20be387c12804ba81c5c986%2FCambodia.jpg%3Fq%3D60%26fit%3Dfill%26fm%3Dwebp&w=3840&q=60"]
+        },
+        bayon: {
+            name: "Bayon Temple",
+            desc: "The Bayon stands at the exact center of the Great City of Angkor Thom. Built by the 'Great Builder' King Jayavarman VII, it is a Buddhist temple known for its 'forest' of 54 towers, each bearing four massive, enigmatic smiling faces. These faces are said to represent the Bodhisattva Avalokiteshvara, though many believe they bear a striking resemblance to the King himself. Beyond the faces, the outer walls contain a staggering wealth of bas-reliefs showing vivid scenes of 12th-century Khmer daily life, naval battles, and marketplace commerce.",
+            map: "https://www.google.com/maps/search/?api=1&query=Bayon+Temple",
+            imgs: ["https://www.agoda.com/wp-content/uploads/2024/04/bayon-cambodia-siem-reap.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRVppKNeDMAbZiBGDj4p5cyJTXGS7SeE2J3w&s", "https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_webp,s_webp/privateangkorwattour.com/wp-content/uploads/Bayon-temple-2.jpg"]
+        },
+        preahkhan: {
+            name: "Preah Khan",
+            desc: "Meaning 'The Sacred Sword,' Preah Khan was a massive monastic complex that served as a Buddhist university and a royal city. It was built on the site of Jayavarman VII's victory over the invading Chams. The temple has been left largely unrestored, creating a hauntingly beautiful atmosphere where giant silk-cotton tree roots slowly dismantle the stone corridors. It is a flat-design temple with a series of concentric enclosures, featuring unique elements like a two-story circular columned pavilion that looks surprisingly Greek in style.",
+            map: "https://www.google.com/maps/search/?api=1&query=Preah+Khan+Temple",
+            imgs: ["https://evivatour.com/wp-content/uploads/2021/09/Preah-Khan-Temple.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzlhsLETxa22O28MVnO_q6itzCy5kC5RgtSA&s", "https://d2d3n9ufwugv3m.cloudfront.net/w1200-h900-cfill/topics/w6hdv-preah%20khan%20temple%20siem%20reap%202.jpg"]
+        },
+        baphuon: {
+            name: "Baphuon",
+            desc: "Often called the 'world's largest jigsaw puzzle,' the Baphuon is a majestic 11th-century temple mountain built for the god Shiva. It features a spectacular 200-meter-long elevated causeway supported by three rows of short columns. The temple suffered a collapse centuries ago and was painstakingly rebuilt stone-by-stone. On the western side, travelers can witness one of the most unique sights in the park: a massive, 60-meter-long reclining Buddha that was cleverly integrated into the existing stone structure during a later religious transition.",
+            map: "https://www.google.com/maps/search/?api=1&query=Baphuon+Temple",
+            imgs: ["https://cdn.sanity.io/images/nxpteyfv/goguides/8b64c5c262c94db8c8b4bef5abd0f92ed9a5fa78-1600x1066.jpg", "https://helloangkor.com/wp-content/uploads/2021/01/HA5D5069.jpg", "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/7d/5b/97/baphuon-temple.jpg?w=900&h=-1&s=1"]
+        },
+        bakheng: {
+            name: "Phnom Bakheng",
+            desc: "Constructed more than two centuries before Angkor Wat, Phnom Bakheng was the first major temple built in the Angkor region after the capital moved from Roluos. It sits atop a natural hill, providing a panoramic view of the entire Angkor Archaeological Park. Today, it is most famous as the premier sunset location; from its summit, you can see the distant towers of Angkor Wat rising above the jungle canopy and the vast West Baray reservoir glowing in the evening light. It stands as a symbolic representation of Mount Meru with its five-tiered pyramid structure.",
+            map: "https://www.google.com/maps/search/?api=1&query=Phnom+Bakheng",
+            imgs: ["https://www.greeneratravel.com/userfiles/850sunset.jpg", "https://apsaraauthority.gov.kh/wp-content/uploads/2023/12/Phnom-Bakheng-2.jpg", "https://www.templemountains.org/images/fp7u0vxe_sldpkzlodineus2v-ss9pi9y7ye8h9gkx0_y9p_xsfauethgrtpn6oq6t6fopuux3lubmxoy9nllk29-mrr-iahimivjltgf22slavrgsp82tbuxuafvgvgbk2t_9jdxoiydljxs7dhxm_otmlkjzh4c445fqvljkhq45igq3dippp1bj6iidh0t29hkpe1esd1bw5qaubosrxab-938.jpg"]
+        }
+    };
+
+    function openTemple(k) {
+        const t = data[k];
+        document.getElementById('tName').innerText = t.name;
+        document.getElementById('tDesc').innerText = t.desc;
+        document.getElementById('tMap').href = t.map;
+        document.getElementById('gBox').innerHTML = t.imgs.map(i => `<img src="${i}">`).join('');
+        const view = document.getElementById('detail-view');
+        view.style.display = 'block';
+        setTimeout(() => view.style.opacity = '1', 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeTemple() {
+        const view = document.getElementById('detail-view');
+        view.style.opacity = '0';
+        setTimeout(() => view.style.display = 'none', 400);
+        document.body.style.overflow = 'auto';
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.stop').forEach(s => observer.observe(s));
+
+    window.addEventListener('scroll', () => {
+        const road = document.querySelector('.roadmap');
+        const line = document.getElementById('pLine');
+        const scrollPos = window.scrollY + window.innerHeight / 2;
+        if (scrollPos > road.offsetTop) {
+            let prg = ((scrollPos - road.offsetTop) / road.offsetHeight) * 100;
+            line.style.height = Math.min(prg, 100) + "%";
+        }
+    });
+</script>
+</body>
+</html>

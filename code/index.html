@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enjoy Trip Cambodia</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">Enjoy Trip</div>
+  <nav>
+    <ul>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#destination">DESTINATION</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+<div class="menu-toggle" id="menuToggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</header>
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+        <h4>Kingdom of Wonder</h4>
+        <h1>Welcome to<br>Cambodia</h1>
+        <p>Discover the Land of Ancient Temples,<br>Rich Culture, and Warm Hospitality.</p>
+        <a href="#about" class="btn">Explore now</a>
+    </div>
+</section>
+<section class="about" id="about">
+    <div class="about-text fade-left">
+        <h2>About Cambodia</h2>
+        <p>
+            Cambodia is a land of timeless, vibrant traditios, and warm hospitality.
+            <br>Rooted in the legacy of the Khmer Empire, its culture shines through
+            <br>dance, crafts, and festivals. Our mission is to share this heritage <br>
+            with the world through authentic, sustainable travel experiences.
+        </p>
+    </div>
+    <div class="about-img fade-right">
+        <img src="angkor.jpg" alt="Cambodia Imawge">
+    </div>
+</section>
+<section id="destination">
+    <h2>DESTINATION</h2>
+    <div class="destination-grid">
+        
+        <div class="card">
+            <img src="Rectangle 13.png">
+            <div class="overlay">
+                <h3>RATANAK KIRI</h3>
+                <a href="Ratanakiri/ratanakkiri.html">View more</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="Rectangle 14.png">
+            <div class="overlay">
+                <h3>SIEM REAP</h3>
+                <a href="Siemreap/Siemreap-done.html">View more</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="Rectangle 15.png">
+            <div class="overlay">
+                <h3>PHNOM PENH</h3>
+                <a href="Phnompenh/phnompenh.html">View more</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="Rectangle 16.png">
+            <div class="overlay">
+                <h3>BATTAMBANG</h3>
+                <a href="Battambang/battambang.html">View more</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="Rectangle 12.png">
+            <div class="overlay">
+                <h3>KAMPOT</h3>
+                <a href="Kampot/kampot.html">View more</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="kk.jpg">
+            <div class="overlay">
+                <h3>KOH KONG</h3>
+                <a href="Kohkong/kohkong.html">View more</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="start-section">
+    <div class="start-container">
+        <div class="start-img">
+            <img src="image 21.png">
+        </div>
+        <div class="start-text">
+            <h2>Your Journey Starts Here</h2>
+            <p>Discover the hidden beauty of Cambodia. Get updates, guides, and travel stories directly to your inbox.</p>
+
+            <div class="email-box">
+                <input type="email" placeholder="Enter your email" required>
+                <button>Subscribe</button>
+            </div>
+
+            <small class="start-note">Weekly travel tips & inspirations</small>
+        </div>
+
+    </div>
+</section>
+<footer class="footer">
+   <div class="footer-left">
+  <div class="footer-grid">
+    <div class="col">
+  <h4>Enjoy Trip</h4>
+  <p class="footer-desc">
+    Discover Cambodia's beauty through destinations, guides, and stories.
+    Travel smarter and explore deeper.
+  </p>
+</div>
+  </div>
+</div>
+    <div class="footer-right">
+
+        <div class="footer-grid">
+            <div class="col">
+                <h4>Explore</h4>
+                <a href="#">Provinces</a>
+                <a href="#">Popular Places</a>
+                <a href="#">Destinations</a>
+                <a href="#">Travel Tips</a>
+            </div>
+
+            <div class="col">
+                <h4>Travel</h4>
+                <a href="#">Flights</a>
+                <a href="#">Hotels</a>
+                <a href="#">Guides</a>
+                <a href="#">Transport</a>
+            </div>
+
+            <div class="col">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+                <a href="#">Terms</a>
+            </div>
+
+            <div class="col">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Team</a>
+                <a href="#">Partners</a>
+                <a href="#">Careers</a>
+                <div class="footer-bottom-left">
+    <span>© 2025 Enjoy Trip. All rights reserved.</span>
+  </div>
+            </div>
+        </div>
+
+        <div class="footer-social">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+        </div>
+    </div>
+</footer>
+<script>
+ const menuToggle = document.getElementById("menuToggle");
+const nav = document.querySelector("nav");
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+  menuToggle.classList.toggle("active");
+});
+document.querySelectorAll("nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("active");
+    menuToggle.classList.remove("active");
+  });
+});
+</script>
+</body>
+</html>
+
