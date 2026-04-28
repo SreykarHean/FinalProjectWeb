@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg: #fdfaf5; 
@@ -167,6 +168,116 @@
             .item:nth-child(even) .item-text { text-align: left; }
             nav, .detail-nav { grid-template-columns: 80px 1fr; }
         }
+        /* --- DISCOVERY FOOTER --- */
+        .discovery-footer {
+            background: #1a1a1a; /* Dark charcoal to contrast the light page */
+            color: #fdfaf5;
+            padding: 100px 5% 40px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-column.brand {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-column.brand h3 {
+            font-weight: 900;
+            letter-spacing: 6px;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-column.brand p {
+            font-size: 1rem;
+            color: #aaa;
+            max-width: 400px;
+            line-height: 1.8;
+        }
+
+        .footer-column-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .link-set h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .link-set a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .link-set a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 40px auto 0;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .socials a {
+            color: #fdfaf5;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-inner {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .footer-column-links {
+                gap: 40px;
+                flex-direction: row;
+            }
+            .footer-bottom-content {
+                flex-direction: column-reverse;
+                gap: 20px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -198,7 +309,7 @@
 
     <div class="item">
         <div class="item-img" onclick="openBox('kachanh')">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ_SKTVTdhG_hQz-HEc1JUZM3waiT9eLKjBA&s">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwX8Ie0Bg4Y3t2DHppniGsZp-XixmcdsAarMqXxMMkbLOA7wvpUFeFpOBV-q4w-elfDU87YfHaDGQYzbhN43Pmsbx92_3UcVabbj6GbnGSGWe2FcUHZa61SgjtC7FhnGwDgQj48VA=s1360-w1360-h1020-rw">
         </div>
         <div class="item-text">
             <span>02. Waterfall</span>
@@ -224,7 +335,7 @@
 <div id="details">
     <div class="detail-nav">
         <button class="close-btn" onclick="closeBox()">← Back</button>
-        <div class="nav-title">Location Dossier</div>
+        <div class="nav-title">Ratanakiri</div>
         <div></div>
     </div>
     <div class="detail-content">
@@ -240,19 +351,19 @@
         yeaklaom: {
             title: "Yeak Laom Lake",
             desc: "Located 5km southeast of Banlung, this circular crater lake is famous for its clear, emerald waters. It is a sacred site for the indigenous Tumpoun community.",
-            img: "data:image/jpeg;base64,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",
+            img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/6c/89/8e/yeak-laom-volcanic-lake.jpg?w=2000&h=-1&s=1",
             map: "https://www.google.com/maps/place/Lake+Yeak+Laom/@13.730303,107.0142858,15z"
         },
         kachanh: {
             title: "Kachanh Waterfall",
             desc: "A beautiful 12-meter drop waterfall situated about 6km southwest of Banlung. It features a suspension bridge and stone stairs for easy exploration.",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ_SKTVTdhG_hQz-HEc1JUZM3waiT9eLKjBA&s",
+            img: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy1K5jxYOCDX00vkYERuYal1D6DatvzfRYaXYw6v8pch3oI2xOaL42Wr0XKaHdJx2TcCuiohsYLhnLwBo229QjB7ZkMuq0Ec7JgZE87h_J52qTxPilIBOh4w7Crg6-3z6TzU64=s1360-w1360-h1020-rw",
             map: "https://www.google.com/maps/place/Kachanh+Waterfall/@13.7126131,106.9634718,17z"
         },
         virachey: {
             title: "Virachey National Park",
             desc: "Cambodia's largest protected wilderness, stretching into Laos and Vietnam. It offers deep-jungle trekking and rare wildlife spotting.",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwIkVbZtFiWGjw0qIQK5ut4qVjECQskF1rqg&s",
+            img: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx64yWTlHyNLXklyJOAuOTpqIJzoI8xhpzKV3-KbPeiktE46-FeffVG7I0cBlJhoe5E0kdr8YnDjkH_Ghfcti_QF3nj0M-Be8haRA0R1cfJ5uNqMa02F4KOUkIFfi7Ktcik_kir=s1360-w1360-h1020-rw",
             map: "https://www.google.com/maps/place/Virachey+National+Park/@14.3315758,106.9157291,10z"
         }
     };
@@ -279,6 +390,35 @@
         }, 500);
     }
 </script>
-
+<footer class="discovery-footer">
+    <div class="footer-inner">
+        <div class="footer-column brand">
+            <h3>Ratanakiri</h3>
+            <p>Into the depths of the northeastern frontier. Discover the untamed beauty of Cambodia's volcanic highlands.</p>
+        </div>
+        
+        <div class="footer-column-links">
+            <div class="link-set">
+                <h4>Navigation</h4>
+                <a href="../index.html">Destinations</a>
+                <a href="#">About the Wild East</a>
+                <a href="#">Travel Safety</a>
+            </div>
+            <div class="link-set">
+                <h4>Discovery</h4>
+                <a href="#yeaklaom">Crater Lakes</a>
+                <a href="#kachanh">Waterfalls</a>
+                <a href="#virachey">National Parks</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p>&copy; 2025 Enjoy Trip. All rights reserved.</p>
+          
+        </div>
+    </div>
+</footer>
 </body>
 </html>

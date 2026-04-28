@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
 <title>Enjoy Trip Cambodia</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -115,65 +119,71 @@
     </div>
 </section>
 <footer class="footer">
-   <div class="footer-left">
-  <div class="footer-grid">
-    <div class="col">
-  <h4>Enjoy Trip</h4>
-  <p class="footer-desc">
-    Discover Cambodia's beauty through destinations, guides, and stories.
-    Travel smarter and explore deeper.
-  </p>
-</div>
-  </div>
-</div>
-    <div class="footer-right">
+  <div class="footer-container" id="contact">
 
-        <div class="footer-grid">
-            <div class="col">
-                <h4>Explore</h4>
-                <a href="#">Provinces</a>
-                <a href="#">Popular Places</a>
-                <a href="#">Destinations</a>
-                <a href="#">Travel Tips</a>
-            </div>
-
-            <div class="col">
-                <h4>Travel</h4>
-                <a href="#">Flights</a>
-                <a href="#">Hotels</a>
-                <a href="#">Guides</a>
-                <a href="#">Transport</a>
-            </div>
-
-            <div class="col">
-                <h4>Support</h4>
-                <a href="#">Help Center</a>
-                <a href="#">Contact Us</a>
-                <a href="#">FAQ</a>
-                <a href="#">Terms</a>
-            </div>
-
-            <div class="col">
-                <h4>Company</h4>
-                <a href="#">About</a>
-                <a href="#">Team</a>
-                <a href="#">Partners</a>
-                <a href="#">Careers</a>
-                <div class="footer-bottom-left">
-    <span>© 2025 Enjoy Trip. All rights reserved.</span>
-  </div>
-            </div>
-        </div>
-
-        <div class="footer-social">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-youtube"></i>
-        </div>
+    <div class="footer-brand">
+      <h3>Enjoy Trip</h3>
+      <p>
+        Enjoy Trip helps you discover handpicked destinations and authentic
+        experiences that make every journey unforgettable
+      </p>
+      <div class="footer-contact">
+        <span>📞 +855 123168999</span>
+      </div>
     </div>
+
+    <div class="footer-links footer-grid">
+
+      <div class="col">
+        <h4>Explore</h4>
+        <a href="#">Destinations</a>
+        <a href="#">Experiences</a>
+        <a href="#">Travel Deals</a>
+        <a href="#">Favorite Trip</a>
+        <a href="#">Package</a>
+        <a href="#">Guides</a>
+      </div>
+
+      <div class="col">
+        <h4>Support</h4>
+        <a href="#">About Enjoy Trip</a>
+        <a href="#">Our Partners</a>
+        <a href="#">Contact Us</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="col">
+        <h4>Stay in the loop</h4>
+        <p>
+          Get travel inspo, exclusive deals, and the latest
+          Enjoy Trip updates straight to your inbox.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-social">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-tiktok"></i>
+      <i class="fab fa-youtube"></i>
+      <i class="fab fa-facebook-f"></i>
+    </div>
+
+    <span class="copyright">
+      © 2025 Enjoy Trip. All rights reserved.
+    </span>
+  </div>
 </footer>
+
 <script>
+document.querySelectorAll(".footer-grid h4").forEach(title => {
+  title.addEventListener("click", () => {
+    const col = title.parentElement;
+    col.classList.toggle("active");
+  });
+});
  const menuToggle = document.getElementById("menuToggle");
 const nav = document.querySelector("nav");
 menuToggle.addEventListener("click", () => {
